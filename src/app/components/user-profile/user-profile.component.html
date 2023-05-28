@@ -1,0 +1,106 @@
+<div class="user-profile">
+  <div class="title">
+    <h1>Perfil</h1>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="content">
+    <div>
+      <img class = "profile-picture" [src]="userProfile.profilePicture" alt="Imagem">
+      <table class="tabela">
+        <tr>
+          <td class="info-title">Nome de utilizador:</td>
+          <td>{{ userProfile['username'] }}</td>
+        </tr>
+        <tr>
+          <td class="info-title">Nome:</td>
+          <td>{{ userProfile.profileInfo.firstName }}</td>
+        </tr>
+        <tr>
+          <td class="info-title">Apelido:</td>
+          <td>{{ userProfile.profileInfo.lastName }}</td>
+        </tr>
+        <tr>
+          <td class="info-title">E-mail:</td>
+          <td>{{ userProfile.profileInfo.email }}</td>
+        </tr>
+        <tr>
+          <td class="info-title">Telemóvel:</td>
+          <td>{{ userProfile.profileInfo.phone }}</td>
+        </tr>
+      </table>
+      
+  
+    </div>
+    <div>
+      <ul>
+        <li><a routerLink="/dashboard/library">Biblioteca</a></li>
+        <li><a routerLink="/wishlist">Wishlist</a></li>
+        <li><a routerLink="/dashboard/lists">Listas Personalizadas</a></li>
+        <li><a routerLink="/dashboard/followers">Seguidores</a></li>
+        <li><a routerLink="/dashboard/following">A Seguir</a></li>
+      </ul>
+    </div>
+    <div class="edit">
+      <div>
+        <button (click)="toggleEdit()">Editar Perfil</button>
+      </div>
+      <div *ngIf="showEdit">
+        <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit(username.value, firstName.value, lastName.value, email.value, phone.value)">
+          <label>
+            Nome de utilizador:
+            <input #username type="text" formControlName="username" value="userProfile.username">
+              <span *ngIf="editProfileForm.controls['username'].touched && editProfileForm.controls['username'].errors">
+                <span *ngIf="editProfileForm.controls['username'].errors['required']">Por favor, insira um nome de utilizador válido. </span>
+                <span *ngIf="editProfileForm.controls['username'].errors['minlength']">Minímo 3 caracteres. </span>
+                <span *ngIf="editProfileForm.controls['username'].errors['pattern']">Não são permitidos caracteres especiais. </span>
+                <span *ngIf="editProfileForm.controls['username'].errors['usernameExists']">Nome já existe.</span>
+              </span>
+          </label>
+    
+          <br>
+          <label>
+            Nome:
+            <input #firstName type="text" formControlName="firstName">
+          </label>
+          <br>
+          <label>
+            Apelido:
+            <input #lastName type="text" formControlName="lastName">
+          </label>
+          <br>
+          <label>
+            Email:
+            <input #email type="email" formControlName="email">
+          </label>
+          <br>
+          <label>
+            Telemóvel:
+            <input #phone type="text" formControlName="phone">
+          </label>
+          <br>
+          <br>
+          <p><strong>Avatar</strong></p>
+          <div class="images">
+            <div  *ngFor="let image of userProfile.alternativePics" (click)="changePicture(image)">
+              <img class = "profile-picture" [src]="image" alt="">
+            </div>
+          </div>
+    
+          <button type="submit">Guardar</button>
+        </form>
+      </div>
+      <div *ngIf="editSuccess" class="alert alert-success" role="alert">
+        Perfil atualizado com sucesso!
+      </div>
+  
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Hide the success message after 3 seconds
+  setTimeout(() => {
+    document.querySelector('.alert-success').style.display = 'none';
+  }, 3000);
+</script>

@@ -1,0 +1,119 @@
+
+<div class="login-background">
+
+    <div class="logo">
+        
+        <img src="../../../favicon.ico" alt="" style="width: 100px;">
+        
+        <h1>Bem-vindo à<br><h3>GameStore</h3></h1>
+    </div>
+
+    <div class="forms-container">
+    
+        <mat-card color="primary"  >
+            <div style="
+                background-color: rgb(65, 65, 65);
+                padding: 5px; 
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;">
+                <mat-card-title style="color: white;text-align: center;">Criar Conta</mat-card-title>
+            </div>
+            <mat-card-content style="padding-top: 20px;">
+                <form [formGroup]="registerForm" (ngSubmit)="register(inputUser.value, inputPass.value)">
+                    <mat-form-field appearance="outline" style="width:75%;">
+                        <mat-label>Utilizador</mat-label>
+                        <input matInput  formControlName="username" type="text" #inputUser required>
+                        <mat-error *ngIf="registerUsername?.invalid">{{usernameRegisterError()}}</mat-error>
+                        <mat-error *ngIf="registerUsername?.hasError('existe')">O utilizador já existe!</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width:75%">
+                        <mat-label>Password</mat-label>
+                        <input matInput  formControlName="password" [type]="hide ? 'password' : 'text'" #inputPass required>
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="registerPassword?.invalid">{{passwordRegisterError()}}</mat-error>
+                    </mat-form-field>
+        
+        
+                </form>
+                <div class="button-box">
+                    <button [disabled]="!registerForm.valid || loadingRegister" 
+                    type="submit" mat-raised-button color="primary"
+                    (click)="register(inputUser.value, inputPass.value)" >
+                    <div class="spinner-container" *ngIf="loadingRegister">
+                        <mat-spinner color="primary" diameter="20">
+                        </mat-spinner>
+                    </div>
+                    Registar Utilizador
+                    </button>
+        
+                </div>
+                <div *ngIf="registerSuccess" class="alert alert-success" role="alert" id="mensagem">
+                    Utilizador criado com sucesso.
+                </div>
+                <div *ngIf="registerError" class="alert alert-danger" role="alert" id="mensagem">
+                    Erro ao criar utilizador. Tente novamente.
+                </div>
+                <div class="register-info">
+                    <small style="text-align: center;margin-top: 10px;color: blue;">Regras construção password</small>
+                    <ul style="list-style: none;padding-top: 5px;margin-left: -25px;">
+                        <li>Mínimo 8 caracteres</li>
+                        <li>1 letra maiúscula</li>
+                        <li>1 letra minúscula</li>
+                        <li>1 número</li>
+                    </ul>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        
+    
+        <mat-card color="primary" >
+            <div style="
+            background-color: rgb(65, 65, 65);
+            padding: 5px; 
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;">
+                <mat-card-title style="color: white;text-align: center;">Login</mat-card-title>
+            </div>
+            <mat-card-content style="padding-top: 20px;">
+                <form [formGroup]="loginForm" (ngSubmit)="login(inputUser.value, inputPass.value)">
+                    <mat-form-field appearance="outline" style="width:75%;">
+                        <mat-label>Utilizador</mat-label>
+                        <input matInput  formControlName="username" type="text" #usernameLogin required>
+                        <mat-error *ngIf="loginUsername?.invalid">{{usernameLoginError()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width:75%">
+                        <mat-label>Password</mat-label>
+                        <input matInput  formControlName="password" [type]="hide ? 'password' : 'text'" #passLogin required>
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="loginPassword?.invalid">{{passwordLoginError()}}</mat-error>
+                    </mat-form-field>
+        
+        
+                </form>
+                <div class="button-box">
+                    <button [disabled]="!loginForm.valid || loadingLogin" 
+                    type="submit" mat-raised-button color="primary"
+                    (click)="login(usernameLogin.value, passLogin.value)" >
+                    <div class="spinner-container" *ngIf="loadingLogin">
+                        <mat-spinner color="primary" diameter="20">
+                        </mat-spinner>
+                    </div>
+                    Entrar
+                    </button>
+        
+                </div>
+                <div *ngIf="loginError" class="alert alert-danger" role="alert" id="mensagem">
+                    Erro ao autenticar utilizador. Tente novamente
+                </div>
+            </mat-card-content>
+        </mat-card>
+        
+    
+    </div>
+</div>
+

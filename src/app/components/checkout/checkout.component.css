@@ -1,0 +1,41 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.mat-input{
+  width: 100px;
+}
+
+.mat-form-field {
+  margin: 0 auto;
+  display: block;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: flex-start;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.carrinho {
+  display: flex;
+  flex-direction: row;
+}
+
+tr.mat-mdc-footer-row td {
+  font-weight: bold;
+}

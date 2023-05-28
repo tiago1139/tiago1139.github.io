@@ -1,0 +1,132 @@
+.error-message {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: x-large;
+  margin:0 auto;
+}
+
+.big-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+.item-container {
+  display: flex;
+  padding-left: 5%;
+  padding-top: 5%;
+  gap: 5%;
+  
+
+}
+
+.img-container img {
+  width: 400px;
+
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+
+
+mat-card-content {
+  padding-top: 2%;
+  padding-left: 2%;
+}
+
+.details p {
+  padding-top: 10px;
+}
+
+mat-list {
+  width: 95%;
+}
+
+mat-list-item {
+  border-bottom: 1px solid rgb(206, 206, 206);
+  padding-top: 10px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+mat-list-item span {
+  font-size: 15px;
+}
+
+.avaliacoes-container {
+  padding: 4%;
+}
+
+.container-img-bttns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30%;
+}
+
+.add-carrinho {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.spinner-container {
+  position: absolute;
+  top: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avalicao-form {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.comentario-container {
+  width: 95%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.property-title {
+  color: blue;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+#link {
+  text-decoration: none;
+  padding-top: 30px;
+}
+
+#link:hover{
+  color: orangered;
+}
+
+.avaliacoes {
+  cursor: pointer !important;
+}
+
+.avaliacoes:hover {
+  background-color: rgba(238, 238, 238, 0.763);
+}

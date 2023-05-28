@@ -1,0 +1,98 @@
+<mat-toolbar style="width: 100%;
+
+                display: flex;"
+                *ngIf="loggedIn"
+                color="primary"
+                fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" fxHide.xs>
+
+
+   <a routerLink="/dashboard" style="margin-top: -15px;"><img src="../favicon.ico" width="70px"></a>
+    
+    <a mat-raised-button color="primary" class="component" routerLink="/dashboard">
+      <span>DashBoard</span>
+    </a>
+
+
+
+    <mat-form-field class="example-full-width"  style="margin: auto;width: 30%;">
+      <mat-label>Pesquisa por um item</mat-label>
+      <input #searchInput
+             type="text"
+             placeholder="Escreve o nome do item"
+             aria-label="Item search"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto"
+             (keydown.enter)="onEnterKeyPressed()">
+
+
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)"  [displayWith]="displayProperty">
+
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <a>{{ option.name }}</a>
+        </mat-option>
+      </mat-autocomplete>
+
+    </mat-form-field>
+    <span fxFlex></span>
+
+    <a mat-raised-button color="primary" class="component" routerLink="/user-profile" >
+      <span>Perfil</span>
+    </a>
+
+    <a mat-raised-button color="primary" class="component" routerLink="/carrinho" >
+      <span>Carrinho</span>
+    </a>
+
+    <button mat-raised-button color="primary" (click)="logout()" class="logout">
+      Sair
+    </button>
+
+</mat-toolbar>
+
+<mat-toolbar fxHide fxShow.xs color="primary" *ngIf="loggedIn">
+  <mat-toolbar-row>
+    <button mat-raised-button color="primary" class="component" [routerLink]="'/dashboard'">
+      Dashboard
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-raised-button color="primary" class="component" [routerLink]="'/carrinho'">
+      Carrinho
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-raised-button color="primary" class="component" [routerLink]="'/user-profile'">
+      Perfil
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-raised-button (click)="logout()" class="logout">
+      Sair
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <mat-form-field class="example-full-width"  style="margin: auto;width: 100%; margin-bottom: 20px;">
+      <mat-label>Pesquisa por um item</mat-label>
+      <input #searchInput
+             type="text"
+             placeholder="Escreve o nome do item"
+             aria-label="Item search"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto"
+             (keydown.enter)="onEnterKeyPressed()">
+
+
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)"  [displayWith]="displayProperty">
+
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <a>{{ option.name }}</a>
+        </mat-option>
+      </mat-autocomplete>
+
+    </mat-form-field>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,92 @@
+.lists .list {
+  background-color: #16c4af;
+  color: #0b9682;
+  border-bottom-color: #0b9682 ;
+  border-bottom:solid;
+  /*border-bottom: #0b9682*/
+
+}
+
+.lists h3{
+  text-align: center;
+ 
+}
+
+.boxList h3{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.lists .list .listtitle {
+  color: #f2f4f4;
+}
+
+.nolists {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.highlightUser{
+  color: darkblue;
+}
+
+.img-container img {
+  width: 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body{
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  flex-basis: auto;
+  max-width: 500px;
+}
+
+.component #itembutton:hover{
+  background-color: rgb(61, 61, 61);
+  color: white;
+}
+
+li:first-child{
+  margin-top: 1rem;
+}
+
+
+
+.buttonDiv {
+  text-align: right;
+  margin-left: auto; 
+  margin-right: 0;
+}
+h3 {
+  text-align: center;
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex;
+  align-items: center;
+  width: 90%;
+}
+
+
+span #spanItems {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

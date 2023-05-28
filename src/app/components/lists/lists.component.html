@@ -1,0 +1,90 @@
+
+
+<!--<div class="lists"*ngIf="hasLists; else noLists">
+    <h3>Listas do utilizador {{user.username}}</h3>
+    <mat-action-list>
+        <button class="list" mat-list-item color="primary" *ngFor="let list of user.lists"
+         tabindex="0" (keydown)="travelKeyboard($event)">
+            <span matListItemTitle class="listtitle">{{list.title}}</span>
+            <span matListItemLine class="listitems">
+                <ng-container *ngFor="let item of list.items">
+                    {{item.name}}
+                </ng-container>
+            </span><mat-divider></mat-divider>
+        </button>
+    </mat-action-list>
+</div>-->
+
+<div id="boxList" *ngIf="hasLists; else noLists">
+  <h3>Listas do utilizador {{user.username}}</h3>
+  <h5>
+    <button id="list-create" mat-raised-button (click)="criarLista()">Criar lista!</button>
+  </h5>
+  <mat-accordion class="accordion">
+    <mat-expansion-panel *ngFor="let list of user.lists" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Lista
+        </mat-panel-title>
+        <mat-panel-description>
+          {{list.title}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Visibilidade : {{list.privacy}}</p>
+      <mat-divider></mat-divider>
+      <p *ngIf="list.items.length == 0"> Esta lista ainda não contém nenhum item!</p>
+      <div *ngIf="list.items.length > 0"> 
+       <span id="spanItens">Itens da lista:</span>
+        <ul>
+          <li *ngFor="let item of list.items"> 
+            <div class="itemsList">
+              <div class="img-container">
+                <img [src]="item?.imagem" alt="Imagem" style="float:left; margin-right: 10px;">
+                </div>
+                {{item.name}}
+                <div class="buttonDiv">
+                 <button id="itemButton" mat-raised-button color="primary" routerLink="/items/{{item._id}}" >
+                  <mat-icon>info</mat-icon>Info 
+                 </button>
+                </div>
+            </div> 
+        </ul>
+        <p>Para mais informações sobre os itens, carregar no botão respetivo!</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+
+<ng-template #noLists>
+  <div *ngIf="user" class="nolists">
+    <h2> O utilizador <span class="highlightUser">{{user.username}}</span> ainda não tem listas! </h2>
+  </div>
+  <h5>
+    <button id="list-create" mat-raised-button (click)="criarLista()">Criar lista!</button>
+  </h5>
+ </ng-template>
+
+ <!--
+        <div class="img-container">
+        <img [src]="item?.imagem" alt="Imagem" style="float:left; margin-right: 10px;">
+        .img-container img {
+    width: 30px;
+}
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    flex-basis: auto;
+    max-width: 800px;
+  }
+
+      </div>
+
+       -->

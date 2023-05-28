@@ -1,0 +1,66 @@
+.quantity-button {
+  background-color:rgb(53, 162, 235);
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.3rem;
+  cursor: pointer;
+}
+
+.remove-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.remove-button:hover {
+  background-color: #d32f2f;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  width: 50px;
+}
+
+.carrinho-text{
+  text-align: center;
+  font-weight: bold;
+}
+
+.carrinhoContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  gap: 15px;
+}
+
+.mat-elevation-z8{
+  width: 70% !important;
+
+}
+
+table{
+  width: 70% !important;
+}
+
+
+.checkout-container {
+  text-align: center;
+  margin: 0 auto;
+  width: 40%;
+}
+
+.out {
+  width: 100% !important;
+}

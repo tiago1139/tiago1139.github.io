@@ -1,0 +1,154 @@
+
+
+<ng-container *ngIf="!item" >
+  <p class="error-message">[Item não encontrado]</p>
+</ng-container>
+
+
+<div class="big-container" *ngIf="item">
+
+  <div *ngIf="itemFound" class="item-container">
+  
+    <div class="container-img-bttns">
+      
+        <div class="img-container">
+          <img [src]="item?.imagem" alt="Imagem">
+        </div>
+      
+        <div *ngIf="item" class = "add-carrinho">
+          <button [disabled]="isLoadingWishlist" *ngIf = "!inWishlist" mat-flat-button color="primary" (click)="addToWishlist(item)">
+            <div class="spinner-container" *ngIf="isLoadingWishlist">
+              <mat-spinner color="primary" diameter="20">
+              </mat-spinner>
+            </div>
+            Adicionar à Wishlist
+          </button>
+          <button [disabled]="isLoadingWishlist" *ngIf = "inWishlist" mat-flat-button color="warn" (click)="removeFromWishlist(item)">
+            <div class="spinner-container" *ngIf="isLoadingWishlist">
+              <mat-spinner color="primary" diameter="20">
+              </mat-spinner>
+            </div>
+            Remover da Wishlist
+          </button>
+          <button *ngIf = "!isDisabled" mat-flat-button color="primary" (click)="addItemCarrinho(item)">Adicionar ao carrinho</button>
+          <button *ngIf = "isDisabled" mat-flat-button color="warn">Está no carrinho</button>
+        </div>
+  
+    </div>
+  
+    <mat-card class="example-card" style="width: 65%;">
+      <mat-card-header>
+        <mat-card-subtitle>{{item?.tipo}}</mat-card-subtitle>
+        <mat-card-title>{{item?.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="details">
+          <h6 class="property-title" >Descrição</h6>
+          <mat-divider></mat-divider>
+          <p>{{ item?.descricao }}</p>
+        </div>
+        <div class="details">
+          <h6 class="property-title" >Plataforma</h6>
+          <mat-divider></mat-divider>
+          <p>{{ item?.plataforma }}</p>
+        </div>
+        <div class="details">
+          <h6 class="property-title" >Idiomas</h6>
+          <mat-divider></mat-divider>
+          <p>
+            <span *ngFor="let idioma of item?.idiomas">
+              {{idioma}}
+            </span>
+
+          </p>
+        </div>
+        <div class="details">
+          <h6 class="property-title" >Preço</h6>
+          <mat-divider></mat-divider>
+          <p>{{ item?.preco | currency:'EUR'}}</p>
+        </div>
+        <div class="details">
+          <h6 class="property-title" >Rating</h6>
+          <mat-divider></mat-divider>
+          <p>{{ item?.rating }}</p>
+        </div>
+        <div *ngIf="item?.link" class="details">
+          <h6 class="property-title" >Link</h6>
+          <mat-divider></mat-divider>
+          <p>
+            <a id="link" [href]="item?.link">Link de {{item?.name}}</a>
+          </p>
+        </div>
+  
+  
+        
+      </mat-card-content>
+  
+    </mat-card>
+  
+  
+  
+  </div>
+  
+  
+  <div *ngIf="itemFound" class="avaliacoes-container">
+  
+    <mat-card style="width: 100%;">
+  
+      <mat-card-content>
+  
+        <div style="width: 25%;text-align: center;margin-left: 0;">
+          <ngx-star-rating [(ngModel)]="ratingValue" [id]="'ratingValue'"></ngx-star-rating>
+        </div>
+        <mat-form-field class="comentario-container" appearance="outline">
+          <mat-label>Deixe o seu comentário</mat-label>
+          <textarea #comentario matInput placeholder="Ex: Este jogo é extraordinário!">{{avaliacao?.comentario}}</textarea>
+        </mat-form-field>
+        <div style="padding-bottom: 15px;">
+          <button [disabled]="isloadingAvaliacao" mat-flat-button color="primary" (click)="saveComment(comentario.value)">
+            <div class="spinner-container" *ngIf="isloadingAvaliacao">
+              <mat-spinner color="primary" diameter="20">
+              </mat-spinner>
+            </div>
+            Guardar Avaliação
+          </button>
+        </div>
+      </mat-card-content>
+    
+    </mat-card>
+    <div style="padding-top: 15px;">
+      <h5>Avaliações</h5>
+      <mat-list role="list">
+        <mat-list-item class="avaliacoes" lines="5" role="listitem" *ngFor="let aval of avaliacoes" (click)="showAvaliacao(aval)">
+          <span matListItemTitle style="display: block;"><strong>{{aval.user.username}}</strong></span>
+          <span matListItemLine style="font-size: 20px;display: inline-flex" *ngFor="let e of [].constructor(aval.estrelas);let i = index">
+            <mat-icon style="color: yellow;vertical-align:sub;">star</mat-icon>
+          </span>
+          {{aval.comentario}}
+          <img matListItemAvatar [src]="aval.user.profilePicture" class="avatar">
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!--
+  <div style="display: flex;
+      flex-direction: column;
+      gap: 10px;">
+        <div style="display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;">
+          <img matListItemAvatar [src]="aval.user.profilePicture" class="avatar">
+          {{aval.user.username}}
+        </div>
+        {{aval.comentario}}
+      </div>
+-->
+
+
+

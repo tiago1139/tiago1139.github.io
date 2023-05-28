@@ -1,0 +1,145 @@
+<h4 style="text-align: center;margin-top: 30px;">Dados e Pagamento</h4>
+
+
+<mat-stepper [linear]="true" #stepper style="width: 80%;">
+  <ng-template matStepperIcon="edit">
+    <mat-icon>done</mat-icon>
+  </ng-template>
+  <mat-step label="Carrinho">
+    <!--
+      <mat-list role="list" >
+        <mat-list-item *ngFor="let item of carrinho">
+          <div style="display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;">
+            <div matListItemTitle>{{item.item.name}}</div>
+            <div matListItemLine>tipo: {{item.item.tipo}}</div>
+            <div matListItemLine>preço: {{item.item.preco | currency:'EUR'}}</div>
+            <img [src]="item.item.imagem" width="50px">
+            <div matListItemLine>x{{item.quantidade}}</div>
+  
+          </div>
+  
+        </mat-list-item>
+      </mat-list>
+
+    -->
+
+    <table mat-table [dataSource]="carrinho" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="Imagem">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let item"> <img width="50px" [src]="item?.item?.imagem" alt="Imagem" style="float:left; margin-right: 10px;"> </td>
+        <td mat-footer-cell *matFooterCellDef> Total </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let item"> {{item.item.name}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Tipo">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let item"> {{item.item.tipo}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Preço">
+        <th mat-header-cell *matHeaderCellDef> Preço </th>
+        <td mat-cell *matCellDef="let item"> {{item.item.preco}} </td>
+        <td mat-footer-cell *matFooterCellDef> {{valorTotal | number : '1.2-2'}} € </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Quantidade">
+        <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+        <td mat-cell *matCellDef="let item"> {{item.quantidade}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+
+  
+
+    <div>
+      <button mat-button matStepperNext>Seguinte</button>
+    </div>
+
+
+
+  </mat-step>
+  <mat-step [stepControl]="firstFormGroup" label="NIF">
+    <form [formGroup]="firstFormGroup">
+      <p>Digite o seu NIF</p>
+      <mat-form-field appearance="fill" style = "width : 250px">
+        <mat-label>NIF</mat-label>
+        <input matInput type = "number" placeholder="Preencha com o seu NIF" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext>Seguinte</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Endereço de morada">
+    <form [formGroup]="secondFormGroup">
+      <p>Digite a sua Morada</p>
+      <mat-form-field appearance="fill" style = "width : 500px">
+        <mat-label>Morada</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. Avenida da Liberdade 245, 1250-096 Lisboa"
+        >
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext>Seguinte</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Método de pagamento">
+    <form [formGroup]="thirdFormGroup"
+          style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    ">
+      <label id="example-radio-group-label">Selecione o método de pagamento</label>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="favoriteMethod"
+        formControlName = "thirdCtrl"
+      >
+        <mat-radio-button
+
+          class="example-radio-button" *ngFor="let method of paymentMethods" [value]="method" required >
+          <mat-icon>{{method.icon}}</mat-icon>
+          {{method.name}}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <div *ngIf="payMessage" style="color: red">{{ payMessage }}</div>
+
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button (click)="processaCompra(favoriteMethod)">Seguinte</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Checkout</ng-template>
+    <p>Informação preenchida e processada com sucesso.</p>
+    <div>
+      <button mat-button matStepperPrevious>Voltar</button>
+      <button mat-button (click)="stepper.reset()">Limpar</button>
+      <button mat-button (click)="comprar()" >Confirmar compra</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+
+

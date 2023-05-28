@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Avaliação em Detalhe</h1>
+<div mat-dialog-content class="dialog-content">
+  <div>
+    <img [src]="data.user.profilePicture" alt="profilePic" class="avatar">
+  </div>
+  <div>
+    <strong>{{data.user.username}}</strong>
+  </div>
+  <div>
+    <span style="font-size: 20px;display: inline-flex" *ngFor="let e of [].constructor(data.estrelas);let i = index">
+        <mat-icon style="color: yellow;">star</mat-icon>
+    </span>
+  </div>
+  <div style="padding-top: 15px;text-align: justify;">
+    <h6 style="color: blue; text-align: center;">Comentário</h6>
+    {{data.comentario}}
+  </div>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-button (click)="onNoClick()">Fechar</button>
+  
+</div>

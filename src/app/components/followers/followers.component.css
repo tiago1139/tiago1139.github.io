@@ -1,0 +1,75 @@
+/*Piece of code taken and adapted : https://www.fourkitchens.com/blog/article/responsive-multi-column-lists-flexbox/
+*/
+.followers {
+	display: flex;
+	flex-wrap: wrap;
+  padding-top: 10px;
+	margin-left: -10px;
+	margin-top: -10px;
+}
+.followers .follower {
+	flex: 1 0 200px;
+  box-sizing: border-box;
+  background: #16c4af;
+  color: #f2f4f4;
+  padding: 5px;
+	margin-left: 10px;
+	margin-top: 10px;
+  text-align: center;
+  
+}
+
+.followers .follower:hover,
+.followers .follower.hovered {
+	background-color:#0b9682;
+  cursor:pointer;
+}
+
+.noFollowers {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.highlightUser{
+  color: darkblue;
+}
+
+
+/*Piece of code taken from : https://www.fourkitchens.com/blog/article/responsive-multi-column-lists-flexbox/
+*/
+@media (min-width: 410px) {
+  .followers .follower {
+    max-width: calc(50% - 10px);
+  }
+}
+@media (min-width: 620px) {
+  .followers .follower {
+    max-width: calc(33.33333% - 10px);
+  }
+}
+@media (min-width: 830px) {
+  .followers .follower {
+    max-width: calc(25% - 10px);
+  }
+}
+@media (min-width: 1040px) {
+  .followers .follower {
+    max-width: calc(20% - 10px);
+  }
+}
+@media (min-width: 1250px) {
+  .followers .follower {
+    max-width: calc(16.66667% - 10px);
+  }
+}
+@media (min-width: 1460px) {
+  .followers .follower {
+    max-width: calc(14.28571% - 10px);
+  }
+}
+@media (min-width: 1670px) {
+  .followers .follower {
+    min-width: calc(12.5% - 10px);
+  }
+}

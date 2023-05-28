@@ -1,0 +1,15 @@
+
+<div *ngIf="user.wishlist.items.length > 0">
+  <h1>Wishlist</h1>
+  <ul>
+    <li *ngFor="let item of user.wishlist.items">
+      <a [routerLink]="['/items', item._id]">
+        <span class="game-name">{{ item.name }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="user.wishlist.items.length == 0">
+  <h1 id="vazia">Wishlist Vazia</h1>
+</div>

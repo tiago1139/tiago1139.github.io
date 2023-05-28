@@ -1,0 +1,71 @@
+
+
+.toolbar-container mat-toolbar {
+  display: flex;
+  align-items: center;
+  background-color: rgb(65, 65, 65);
+  margin-top: 1%;
+}
+
+.toolbar-container mat-toolbar mat-form-field {
+  max-width: 30%;
+}
+
+mat-form-field {
+  margin-left: auto;
+
+}
+
+mat-toolbar {
+  padding-top: 0.4%;
+  background-color: rgb(90, 90, 90);
+
+}
+
+mat-toolbar a {
+  margin-right: 5%;
+  font-size: large;
+}
+
+mat-toolbar > :nth-child(3) {
+  margin-right: auto;
+}
+
+.component {
+  align-self: center !important;
+}
+
+.component:hover {
+  background-color: rgb(61, 61, 61);
+  color: white;
+}
+
+.logout:hover {
+  background-color: rgb(61, 61, 61);
+  color: white;
+}
+
+.logout {
+  font-size: large;
+  align-self: center !important;
+}
+
+.toolbar-child {
+  text-align: center;
+  width: 100%;
+}
+
+
+@media only screen and (max-device-width: 480px) {
+
+  .component {
+    width: 100%;
+    height: 100%;
+    font-size: large;
+  }
+
+  .logout {
+    width: 100%;
+  }
+
+}

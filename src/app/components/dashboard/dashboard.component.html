@@ -1,0 +1,12 @@
+<!--<div *ngIf="user">
+  <h1>Seja bem vindo à sua dashboard, {{user.username}} </h1>
+</div>
+-->
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of navLinks"
+  routerLink = "{{link.link}}"
+  >{{link.label}}</a>
+</nav>
+<mat-tab-nav-panel tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>
