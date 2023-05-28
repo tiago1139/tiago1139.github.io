@@ -1,4 +1,4 @@
 export const environment = {
     production:true,
-    api:'http://appserver.alunos.di.fc.ul.pt:3012'
+    api:'https://gamestore-api-ek26.onrender.com'
 };
