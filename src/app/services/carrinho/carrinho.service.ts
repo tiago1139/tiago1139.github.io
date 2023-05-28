@@ -4,7 +4,7 @@ import { Observable, catchError, of, tap } from 'rxjs';
 import {Item} from "../../models/item";
 import {AuthService} from "../../auth/auth.service";
 import { ItemCarrinho } from 'src/app/models/itemCarrinho';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 
 

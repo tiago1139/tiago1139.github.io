@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { List } from 'src/app/models/list';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { User } from 'src/app/models/user';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
